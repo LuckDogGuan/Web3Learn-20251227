@@ -21,7 +21,11 @@ export default function Home() {
       color: "from-cyan-500 to-blue-600",
       description: "建立对区块链技术的基本认知，理解EVM工作机制",
       topics: ["区块链原理", "以太坊基础", "EVM机制", "Gas费用模型", "MetaMask实践"],
-      resources: ["北京大学肖臻公开课", "以太坊官方文档", "登链社区"]
+      resources: [
+        { name: "北京大学肖臻公开课", url: "https://www.bilibili.com/video/BV1Vt411X7JF" },
+        { name: "以太坊官方文档", url: "https://ethereum.org/en/developers/docs/" },
+        { name: "登链社区", url: "https://learnblockchain.cn/" }
+      ]
     },
     {
       id: 2,
@@ -31,7 +35,11 @@ export default function Home() {
       color: "from-purple-500 to-pink-600",
       description: "掌握Solidity语言，编写安全的智能合约",
       topics: ["Solidity语法", "Remix IDE", "Foundry框架", "ERC-20标准", "ERC-721 NFT"],
-      resources: ["CryptoZombies", "WTF Solidity", "Solidity by Example"]
+      resources: [
+        { name: "CryptoZombies", url: "https://cryptozombies.io/" },
+        { name: "WTF Solidity", url: "https://github.com/AmazingAng/WTF-Solidity" },
+        { name: "Solidity by Example", url: "https://solidity-by-example.org/" }
+      ]
     },
     {
       id: 3,
@@ -41,7 +49,11 @@ export default function Home() {
       color: "from-blue-500 to-indigo-600",
       description: "构建DApp后端服务，实现链上链下交互",
       topics: ["viem.sh/ethers.js", "事件监听", "交易签名", "钱包集成", "API开发"],
-      resources: ["Viem文档", "Ethers.js文档", "Alchemy SDK"]
+      resources: [
+        { name: "Viem文档", url: "https://viem.sh/" },
+        { name: "Ethers.js文档", url: "https://docs.ethers.org/" },
+        { name: "Alchemy SDK", url: "https://www.alchemy.com/" }
+      ]
     },
     {
       id: 4,
@@ -51,7 +63,11 @@ export default function Home() {
       color: "from-green-500 to-emerald-600",
       description: "深入DeFi协议，掌握智能合约安全最佳实践",
       topics: ["Uniswap源码", "借贷协议", "安全漏洞", "Slither工具", "审计实践"],
-      resources: ["Ethernaut", "Damn Vulnerable DeFi", "How to DeFi"]
+      resources: [
+        { name: "Ethernaut", url: "https://ethernaut.openzeppelin.com/" },
+        { name: "Damn Vulnerable DeFi", url: "https://www.damnvulnerabledefi.xyz/" },
+        { name: "How to DeFi", url: "https://www.howtodefi.com/" }
+      ]
     },
     {
       id: 5,
@@ -61,7 +77,11 @@ export default function Home() {
       color: "from-orange-500 to-red-600",
       description: "探索多链生态，掌握前沿技术",
       topics: ["Rust语言", "Solana生态", "Move语言", "Layer2技术", "跨链协议"],
-      resources: ["Solana文档", "Substrate文档", "Sui/Aptos文档"]
+      resources: [
+        { name: "Solana文档", url: "https://docs.solana.com/" },
+        { name: "Substrate文档", url: "https://docs.substrate.io/" },
+        { name: "Sui/Aptos文档", url: "https://sui.io/" }
+      ]
     }
   ];
 
@@ -136,6 +156,46 @@ export default function Home() {
       rating: 5,
       type: "安全训练",
       badge: "安全专项"
+    },
+    {
+      name: "RareSkills - Ultimate Solidity Course",
+      description: "高质量深度Solidity课程，被安全研究人员推荐，包含34+个系统化教程",
+      url: "https://rareskills.io/learn-solidity",
+      rating: 5,
+      type: "在线课程",
+      badge: "深度进阶"
+    },
+    {
+      name: "Cyfrin Security & Auditing Course",
+      description: "最高级的安全审计课程，8个真实审计案例从初级到终极BOSS",
+      url: "https://github.com/Cyfrin/security-and-auditing-full-course-s23",
+      rating: 5,
+      type: "在线课程",
+      badge: "审计专项"
+    },
+    {
+      name: "Damn Vulnerable DeFi",
+      description: "DeFi特定漏洞学习，实战攻击模拟和深入风险理解",
+      url: "https://www.damnvulnerabledefi.xyz",
+      rating: 5,
+      type: "安全训练",
+      badge: "DeFi安全"
+    },
+    {
+      name: "OpenZeppelin Contracts",
+      description: "业界标准合约库，学习生产级代码的最佳方式",
+      url: "https://www.openzeppelin.com/solidity-contracts",
+      rating: 5,
+      type: "代码库",
+      badge: "标准库"
+    },
+    {
+      name: "WTF Solidity",
+      description: "中文Solidity教程，从基础到进阶，代码示例丰富",
+      url: "https://github.com/AmazingAng/WTF-Solidity",
+      rating: 5,
+      type: "中文社区",
+      badge: "中文教程"
     }
   ];
 
@@ -372,9 +432,16 @@ export default function Home() {
                           </h4>
                           <ul className="space-y-2">
                             {phase.resources.map((resource, i) => (
-                              <li key={i} className="text-slate-400 flex items-center gap-2">
+                              <li key={i} className="text-slate-400 flex items-center gap-2 group">
                                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
-                                {resource}
+                                <a 
+                                  href={resource.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="hover:text-cyan-400 transition-colors cursor-pointer hover:underline"
+                                >
+                                  {resource.name}
+                                </a>
                               </li>
                             ))}
                           </ul>
